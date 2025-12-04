@@ -3,6 +3,8 @@ from datetime import datetime
 
 from flask import Flask, render_template
 
+from .data import boulder_temp
+
 
 def create_app():
     # create and configure the app
@@ -11,7 +13,8 @@ def create_app():
     # a simple page that says hello
     @app.route('/')
     def index():
-        data = {"answer": "YES!", "time": datetime.now().strftime("%A, %B %d %Y at %H:%M:%S"), "boulder": 30, "mcmurdo": 35}
+        boulder = boulder_temp()
+        data = {"answer": "YES!", "time": datetime.now().strftime("%A, %B %d %Y at %H:%M:%S"), "boulder": boulder, "mcmurdo": 35}
         return render_template('index.html', data=data)
 
     return app
