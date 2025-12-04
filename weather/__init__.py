@@ -12,6 +12,20 @@ def compare(boulder, mcmurdo):
     else: 
         return "NO"
 
+def morning():
+    pass
+
+def time_of_day(hour):
+    print("hour:", hour)
+    if hour < 6 or hour >= 22:
+        return "night"
+    elif hour < 12:
+        return "morning"
+    elif hour < 18:
+        return "afternoon"
+    else:
+        return "evening"
+
 def create_app():
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -22,10 +36,12 @@ def create_app():
         boulder = boulder_temp()
         mcmurdo = mcmurdo_temp()
         answer = compare(boulder, mcmurdo)
+        now = datetime.now()
         data = {"answer": answer, 
-                "time": datetime.now().strftime("%A, %B %d, %Y at %H:%M:%S MDT"), 
+                "time": now.strftime("%A, %B %d, %Y at %H:%M:%S MDT"), 
                 "boulder": boulder,
-                 "mcmurdo": mcmurdo}
+                 "mcmurdo": mcmurdo,
+                 "time_of_day": time_of_day(now.hour)}
         return render_template('index.html', data=data)
 
     return app

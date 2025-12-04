@@ -4,12 +4,15 @@
 <div class="container py-4">
     <h3 class="mb-4 text-primary">IS IT COLDER THAN ANTARCTICA RIGHT NOW?</h3>
 
-    <h1 class="mb-4 text-primary">{{ data.answer }}</h1>
+    <h1 class="mb-4 text-primary"><b>{{ data.answer }}</b></h1>
 
-    <p>It is now {{ data.time }}</p>
-    <p>At McMurdo Station the temperature is: {{ data.mcmurdo }}ºF *</p>
-    <p>In Boulder the temperature is: {{ data.boulder}}ºF</p>
+    <h5>Good {{ data.time_of_day }}! It is now {{ data.time }}.</h5>
 
-    <p>* Technically, this data is from Scott Base...</p>
+    {% if data.time_of_day == "morning" %}
+    <p>Don't forget to take your allegy pill!</p>
+    {% endif %}
+    <h5>At McMurdo Station/Scott Base the temperature is: <b>{{ data.mcmurdo }}ºF</b></h5>
+    <h5>In Boulder the temperature is: <b>{{ data.boulder }}ºF</b></h5>
+
 </div>
 {% endblock %}
