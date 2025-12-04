@@ -2,13 +2,14 @@
 
 {% block body %}
 <div class="container py-4">
-    <h1 class="mb-4 text-primary">IS IT COLDER THAN ANTARCTICA RIGHT NOW?</h1>
+    <h3 class="mb-4 text-primary">IS IT COLDER THAN ANTARCTICA RIGHT NOW?</h3>
 
     <h1 class="mb-4 text-primary">{{ data.answer }}</h1>
 
     <p>It is now {{ data.time }}</p>
-    <p>At McMurdo Station the temperature is: {{ data.mcmurdo }}ºF</p>
+    <p>At McMurdo Station the temperature is: {{ data.mcmurdo }}ºF *</p>
     <p>In Boulder the temperature is: {{ data.boulder}}ºF</p>
 
+    <p>* Technically, this data is from Scott Base...</p>
 </div>
 {% endblock %}
