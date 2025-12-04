@@ -16,7 +16,6 @@ def morning():
     pass
 
 def time_of_day(hour):
-    print("hour:", hour)
     if hour < 6 or hour >= 22:
         return "night"
     elif hour < 12:

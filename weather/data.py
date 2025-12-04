@@ -19,6 +19,5 @@ def mcmurdo_temp():
     response = requests.get(mcmurdo_url)
     soup = bs4.BeautifulSoup(response.text, 'html.parser')
     tstring = str(soup.find_all('td')[3].font.b.contents[0])
-    print(tstring, type(tstring))
     temp = float(tstring.split("°")[0])
     return c_to_f(temp)
