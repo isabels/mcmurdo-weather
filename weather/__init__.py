@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from flask import Flask, render_template
 
@@ -35,7 +36,8 @@ def create_app():
         boulder = boulder_temp()
         mcmurdo = mcmurdo_temp()
         answer = compare(boulder, mcmurdo)
-        now = datetime.now()
+        tz = ZoneInfo("America/Denver")
+        now = datetime.now(tz=tz)
         data = {"answer": answer, 
                 "time": now.strftime("%A, %B %d, %Y at %H:%M:%S MDT"), 
                 "boulder": boulder,
