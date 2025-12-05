@@ -38,10 +38,12 @@ def create_app():
         boulder = boulder_temp()
         mcmurdo = mcmurdo_temp()
         answer = compare(boulder, mcmurdo)
-        tz = ZoneInfo("America/Denver")
-        now = datetime.now(tz=tz)
+        btz = ZoneInfo("America/Denver")
+        mtz = ZoneInfo("Antarctica/McMurdo")
+        now = datetime.now(tz=btz)
         data = {"answer": answer, 
-                "time": now.strftime("%A, %B %d, %Y at %H:%M:%S MDT"), 
+                "btime": now.strftime("%A, %B %d, %Y at %H:%M"), 
+                "mtime": now.astimezone(tz=mtz).strftime("%H:%M"),
                 "boulder": boulder,
                  "mcmurdo": mcmurdo,
                  "time_of_day": time_of_day(now.hour)}
