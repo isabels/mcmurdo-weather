@@ -6,6 +6,8 @@ boulder_url = "https://api.weather.gov/stations/KBDU/observations/latest"
 mcmurdo_url = "https://webmedia.antarcticanz.govt.nz/weather/sbweather.html"
 
 def c_to_f(c):
+    if c is None:
+        return None
     return (c * 9./5) + 32
 
 def boulder_temp():

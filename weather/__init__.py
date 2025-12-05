@@ -8,6 +8,8 @@ from .data import boulder_temp, mcmurdo_temp
 
 
 def compare(boulder, mcmurdo):
+    if boulder is None or mcmurdo is None:
+        return "WE JUST DON'T KNOW..."
     if boulder < mcmurdo:
         return "YES!"
     else: 
