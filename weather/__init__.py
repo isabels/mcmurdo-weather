@@ -44,8 +44,8 @@ def create_app():
         data = {"answer": answer, 
                 "btime": now.strftime("%A, %B %d, %Y at %H:%M"), 
                 "mtime": now.astimezone(tz=mtz).strftime("%H:%M"),
-                "boulder": boulder,
-                 "mcmurdo": mcmurdo,
+                "boulder": "{:.1f}".format(boulder),
+                 "mcmurdo": "{:.1f}".format(mcmurdo),
                  "time_of_day": time_of_day(now.hour)}
         return render_template('index.html', data=data)
 
