@@ -27,6 +27,12 @@ def time_of_day(hour):
         return "afternoon"
     else:
         return "evening"
+    
+def format_temp(temp):
+    if temp is None:
+        return "N/A"
+    else:
+        return "{:.1f} °F".format(temp)
 
 def create_app():
     # create and configure the app
@@ -44,8 +50,8 @@ def create_app():
         data = {"answer": answer, 
                 "btime": now.strftime("%A, %B %d, %Y at %H:%M"), 
                 "mtime": now.astimezone(tz=mtz).strftime("%H:%M"),
-                "boulder": "{:.1f}".format(boulder),
-                 "mcmurdo": "{:.1f}".format(mcmurdo),
+                "boulder": format_temp(boulder),
+                 "mcmurdo": format_temp(mcmurdo),
                  "time_of_day": time_of_day(now.hour)}
         return render_template('index.html', data=data)
 
